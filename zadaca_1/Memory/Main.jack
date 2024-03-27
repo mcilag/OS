@@ -1,0 +1,73 @@
+class Main
+{
+    function void main()
+    {
+        var Array A, B, C;
+        
+        let A = Array.new(7);
+        let A[0] = 10;
+        let A[1] = 14;
+        let A[2] = 13;
+        let A[3] = 12;
+        let A[4] = 11;
+        let A[5] = 34;
+        let A[6] = 22;
+        
+        do Output.printString("A:");
+        do Output.println();
+        do Output.printInt(A[0]);
+        do Output.println();
+        do Output.printInt(A[1]);
+        do Output.println();
+        do Output.printInt(A[2]);
+        do Output.println();
+        do Output.printInt(A[3]);
+        do Output.println();
+        do Output.printInt(A[4]);
+        do Output.println();
+        do Output.printInt(A[5]);
+        do Output.println();
+        do Output.printInt(A[6]);
+        do Output.println();
+        do Output.println();
+        
+        let B = Array.new(7);
+        let C = Array.new(3);
+        
+        do Memory.memcpy(A, B, 7);
+        
+        do Output.printString("memcpy(A, B, 7) -> B:");
+        do Output.println();
+        do Output.printInt(B[0]);
+        do Output.println();
+        do Output.printInt(B[1]);
+        do Output.println();
+        do Output.printInt(B[2]);
+        do Output.println();
+        do Output.printInt(B[3]);
+        do Output.println();
+        do Output.printInt(B[4]);
+        do Output.println();
+        do Output.printInt(B[5]);
+        do Output.println();
+        do Output.printInt(B[6]);
+        do Output.println();
+
+        do Memory.memcpy(A, C, 2);
+
+        do Output.println();
+        do Output.printString("memcpy(A, C, 2) -> C:");
+        do Output.println();
+        do Output.printInt(C[0]);
+        do Output.println();
+        do Output.printInt(C[1]);
+        do Output.println();
+        do Output.printInt(C[2]);
+        
+        do A.dispose();
+        do B.dispose();
+        do C.dispose();
+        
+        return;
+    }
+}
