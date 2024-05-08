@@ -1,0 +1,78 @@
+class Tetris
+{ 
+	field int x, y, s, vx, vy;
+	
+	constructor Tetris new()
+	{
+		let s = 15;
+		let x = 230;
+		let y = 120;
+		let vx = 0;
+		let vy = 0;
+		do drawL(this);
+		return this;
+	}
+	
+	method void drawL(bool color)
+	{
+		do Screen.setColor(color);
+		do Screen.drawRectangle(x, y - s, x + s, y + (2*s));
+        do Screen.drawRectangle(x + s, y + s, x + (2*s), y + (2*s));
+		return;
+	}
+	
+	method void moveL()
+	{ 
+		if (~(vx = 0))
+		{
+			if((x + vx > 0) & (x + (2*s) + vx < 512)) // provjera je li u granicama ekrana
+			{
+				do drawL(false); // obrisi (obojaj bijelo)
+				let x = x + vx;
+				do drawL(true); // ponovno nacrtaj
+			}
+		}
+		
+		
+		if (~(vy = 0))
+		{
+			if(((y - s) + vy > 0) & (y + (2*s) + vy < 256))
+			{
+				do drawL(false);
+				let y = y + vy;
+				do drawL(true);
+			}
+		}
+		return;
+	}
+	
+	method void runL()
+	{
+		var char k;
+		let k = 0;
+		
+		while(~(k = 140)) // ESC (program end)
+		{
+			while (k = 0) // niti jedna tipka nije pritisnuta
+			{
+				let k = Keyboard.keyPressed();
+				do moveL();
+				do Sys.wait(5);
+			}
+			
+		if (k = 131) {let vy = -1; let vx = 0; let k = 0; } // strijelica prema gore
+		if (k = 133) {let vy = 1; let vx = 0; let k = 0; } // strijelica prema dolje
+		if (k = 130) {let vy = 0; let vx = -1; let k = 0; } // strijelica lijevo
+		if (k = 132) {let vy = 0; let vx = 1; let k = 0; } // strijelica desno 
+		}
+
+		return;
+	}
+	
+	method void dispose()
+	{
+		do Memory.deAlloc(this);
+		return;
+	}
+	
+}

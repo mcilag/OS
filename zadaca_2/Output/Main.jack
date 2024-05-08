@@ -1,0 +1,18 @@
+class Main
+{
+    function void main()
+    {
+        do Output.printString("abcdefghijkl");
+        do Output.println();
+        do Output.printString("nestonestonestonesto");
+        do Output.println();
+        do Output.printString("opetopetopetopetopetopet");
+        do Output.println();
+        do Output.printString("kfwajhuwfiqkacmjhvcsgzwpo");
+
+        do Output.moveCursor(0,0);
+        do Output.printString("MARTINA MARTINA MARTINA");
+
+        return;
+    }
+}
